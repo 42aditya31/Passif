@@ -73,3 +73,16 @@ function getRandomLower() {
     return finalPassword;
   }
   
+  
+  // copy to clipboard
+let button = document.getElementById("clipboardBtn");
+// add click event listner on button
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  // execute command for copy text by selecting textarea text with id
+  document.execCommand(
+    "copy",
+    false,
+    document.getElementById("PasswordResult").select()
+  );
+});
