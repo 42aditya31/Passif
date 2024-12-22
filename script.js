@@ -48,3 +48,28 @@ function getRandomLower() {
     );
     // console.log(hasLower, hasUpper, hasNumber, hasSymbol);
   });
+
+    
+  // function for generating random password
+  function generatePassword(lower, upper, number, symbol, length) {
+    let generatedPassword = "";
+    const typesCount = lower + upper + number + symbol;
+    // filter out unchecked types
+    const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
+      (item) => Object.values(item)[0]
+    );
+    // console.log(typesArr);
+  
+    // creating a loop for calling generator function for each type
+    for (let i = 0; i < length; i += typesCount) {
+      typesArr.forEach((type) => {
+        const funcName = Object.keys(type)[0];
+        generatedPassword += randomFunc[funcName]();
+      });
+    }
+  
+    // slicing password from 0 to length
+    const finalPassword = generatedPassword.slice(0, length);
+    return finalPassword;
+  }
+  
